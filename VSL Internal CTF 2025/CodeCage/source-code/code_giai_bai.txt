@@ -1,0 +1,4 @@
+import pathlib
+# Đọc toàn bộ nội dung tệp từ đầu
+content = pathlib.Path("./flag.txt").read_text(encoding='utf-8')
+print(content)

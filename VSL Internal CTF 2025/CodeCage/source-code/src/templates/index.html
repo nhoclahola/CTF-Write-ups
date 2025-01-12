@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Python Code Sandbox</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Source+Code+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-p6a3Yx0Of+2zQPt4bF8K3E+I6u1w8e0F5J7Zk2d1QY5KzV1R8U5PZ8A1B3T6c4QfY6D0n9e6P5b3L2M1f7A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+        <i class="fas fa-python"></i> Python Code Sandbox
+        <i class="fas fa-python"></i>
+      </h1>
+
+      <!-- Snippets Selection -->
+      <div class="snippets-section">
+        <label for="snippets"
+          ><i class="fas fa-folder-open"></i> Chọn snippet:</label
+        >
+        <select id="snippets">
+          <option value="">-- Chọn snippet có sẵn --</option>
+        </select>
+      </div>
+
+      <form id="codeForm">
+        <div class="code-editor-section">
+          <textarea
+            id="codeInput"
+            name="code"
+            placeholder="Enter your Python code here..."
+            spellcheck="false"
+          ></textarea>
+          <div class="code-actions">
+            <button type="button" id="copyCodeBtn" title="Copy code">
+              <i class="fas fa-copy"></i> Copy
+            </button>
+            <button type="button" id="downloadCodeBtn" title="Download code">
+              <i class="fas fa-download"></i> Download
+            </button>
+          </div>
+        </div>
+
+        <!-- CAPTCHA Section -->
+        <div class="captcha-section">
+          <div class="captcha-question-box">
+            <label for="captchaInput" class="captcha-label"
+              >Solve the CAPTCHA:</label
+            >
+            <div id="captchaQuestion" class="captcha-question">Loading...</div>
+          </div>
+          <div class="captcha-input-group">
+            <input
+              type="text"
+              id="captchaInput"
+              name="captcha"
+              placeholder="Enter CAPTCHA result"
+              required
+            />
+            <button type="button" id="refreshCaptcha" title="Refresh CAPTCHA">
+              <i class="fas fa-sync-alt"></i>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="execute-btn">
+          <i class="fas fa-play"></i> Execute
+        </button>
+      </form>
+
+      <div class="output-section">
+        <h2>Output:</h2>
+        <pre id="output">Your output will appear here.</pre>
+      </div>
+
+      <div class="history-section">
+        <h2>Execution History:</h2>
+        <ul id="historyList">
+          <li>No previous executions.</li>
+        </ul>
+      </div>
+
+      <div class="info">
+        <h2>About This Sandbox:</h2>
+        <p>
+          Welcome to the Python Code Sandbox! Here, you can experiment with
+          Python code in a controlled environment. Feel free to write and
+          execute your Python scripts. However, be cautious as certain
+          operations may not be permitted.
+        </p>
+      </div>
+    </div>
+
+    <!-- Script -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>

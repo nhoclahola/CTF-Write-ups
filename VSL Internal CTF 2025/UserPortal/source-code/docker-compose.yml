@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  php:
+    build:
+      context: .
+    environment:
+      - DB_HOST=mysql
+      - DB_NAME=my_database
+      - DB_USER=user
+      - DB_PASSWORD=userpassword
+    depends_on:
+      - mysql
+    ports:
+      - "8000:80"
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: my_database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql:/docker-entrypoint-initdb.d
